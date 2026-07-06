@@ -26,3 +26,18 @@ Happy modeling!
 [0m16:36:40.439996 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c3ec180>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c3f45f0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10c31d590>]}
 [0m16:36:40.440212 [debug] [MainThread]: Flushing usage events
 [0m16:36:41.532399 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:35:30.030992 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001538B7AF350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001538BFA7B00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001538BFA7B90>]}
+
+
+============================== 21:35:30.046222 | 70241117-35d3-4317-8160-bd286975b1a2 ==============================
+[0m21:35:30.046222 [info ] [MainThread]: Running with dbt=1.11.7
+[0m21:35:30.048219 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'False', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'partial_parse': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'profiles_dir': 'C:\\Projects\\dbt-zero-to-hero', 'invocation_command': 'dbt snapshot', 'indirect_selection': 'eager', 'use_colors': 'True', 'use_experimental_parser': 'False', 'log_path': 'logs'}
+[0m21:35:30.049219 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Projects\dbt-zero-to-hero\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m21:35:30.052275 [debug] [MainThread]: Command `dbt snapshot` failed at 21:35:30.052275 after 0.22 seconds
+[0m21:35:30.053286 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001538BA6EFC0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001538BFA7260>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001538BFA7AD0>]}
+[0m21:35:30.053286 [debug] [MainThread]: Flushing usage events
+[0m21:35:31.196361 [debug] [MainThread]: An error was encountered while trying to flush usage events
