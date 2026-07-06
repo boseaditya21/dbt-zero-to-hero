@@ -1,0 +1,31 @@
+models:
+  - name: dim_listings_cleansed
+    columns:
+      - name: host_id
+        description: "The foreign key referencing the host" # Added a placeholder to keep the node valid
+       
+      - name: room_type
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: 
+                  - 'Entire home/apt'
+                  - 'Private room'
+                  - 'Shared room'
+                  - 'Hotel room'
+            
+  - name: dim_hosts_cleansed
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: host_id
+        data_type: integer
+      - name: host_name
+        data_type: string
+      - name: is_superhost
+        data_type: string
+      - name: updated_at
+        data_type: timestamp
+      - name: created_at
+        data_type: timestamp
