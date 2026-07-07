@@ -1,29 +1,30 @@
 models:
   - name: dim_listings_cleansed
-    data_tests: 
-      - minimum_row_count: 
+    description: Cleansed table which contains Airbnb listings.
+    data_tests:
+      - minimum_row_count:
           arguments:
             min_row_count: 1000
           config: # Note: In dbt, test configs like severity must sit under a 'config' block
-            severity: warn
+            severity: error
     columns:
       - name: host_id
         description: "The foreign key referencing the host"
-       
+
       - name: room_type
         data_tests:
           - accepted_values:
               arguments:
-                values: 
-                  - 'Entire home/apt'
-                  - 'Private room'
-                  - 'Shared room'
-                  - 'Hotel room'
-            
-      - name: minimum_nights 
-        data_tests:          
+                values:
+                  - "Entire home/apt"
+                  - "Private room"
+                  - "Shared room"
+                  - "Hotel room"
+
+      - name: minimum_nights
+        data_tests:
           - positive_values
-  
+
   - name: dim_hosts_cleansed # 👈 Merged into a single, comprehensive block
     config:
       contract:
@@ -38,18 +39,18 @@ models:
           - type: not_null
         data_tests:
           - unique
-      
+
       - name: host_name
         data_type: string
         constraints:
           - type: not_null
-      
+
       - name: is_superhost
         data_type: string
         data_tests:
           - accepted_values:
               arguments:
-                values: ['t', 'f']
+                values: ["t", "f"]
 
       - name: updated_at
         data_type: timestamp
