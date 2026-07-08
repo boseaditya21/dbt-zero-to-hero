@@ -1,7 +1,5 @@
 packages:
-  - package: calogica/dbt_expectations
-    version: [">=0.8.0", "<0.10.0"] # Or whichever version matches your dbt core version
   - package: dbt-labs/dbt_utils
     version: 1.4.1
   - package: metaplane/dbt_expectations
-    version: ["&gt;=0.10.0", "&lt;0.12.0"]
+    version: [">=0.10.0", "<0.12.0"]
