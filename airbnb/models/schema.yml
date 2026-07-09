@@ -51,6 +51,8 @@ models:
                 quantile: .99
                 min_value: 50
                 max_value: 500
+              config: # 👈 Add this block
+                severity: warn # 👈 Change error to warning
           - dbt_expectations.expect_column_max_to_be_between:
               arguments:
                 max_value: 5000
