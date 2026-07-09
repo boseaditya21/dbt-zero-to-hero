@@ -60,7 +60,11 @@ click==8.4.2
     #   dbt-semantic-interfaces
     #   uvicorn
 colorama==0.4.6
-    # via dbt-common
+    # via
+    #   click
+    #   dbt-common
+    #   tqdm
+    #   typer
 coloredlogs==14.0
     # via dagster
 cryptography==49.0.0
@@ -142,6 +146,8 @@ graphql-core==3.2.11
     #   graphql-relay
 graphql-relay==3.2.0
     # via graphene
+greenlet==3.5.3
+    # via sqlalchemy
 grpcio==1.82.1
     # via
     #   dagster
@@ -263,6 +269,8 @@ protobuf==6.33.6
     #   dbt-core
     #   dbt-protos
     #   grpcio-health-checking
+psutil==7.2.2
+    # via dagster
 pycparser==3.0
     # via cffi
 pydantic==2.13.4
@@ -278,6 +286,8 @@ pyjwt==2.13.0
     # via snowflake-connector-python
 pyopenssl==26.3.0
     # via snowflake-connector-python
+pyreadline3==3.5.6
+    # via humanfriendly
 python-dateutil==2.9.0.post0
     # via
     #   botocore
@@ -298,6 +308,10 @@ pytz==2026.2
     #   dbt-adapters
     #   dbt-core
     #   snowflake-connector-python
+pywin32==312
+    # via dagster
+pywin32-ctypes==0.2.3
+    # via keyring
 pyyaml==6.0.3
     # via
     #   dagster-shared
@@ -415,7 +429,9 @@ typing-extensions==4.16.0
 typing-inspection==0.4.2
     # via pydantic
 tzdata==2026.2
-    # via dagster
+    # via
+    #   agate
+    #   dagster
 universal-pathlib==0.3.10
     # via dagster
 urllib3==2.7.0
@@ -424,8 +440,6 @@ urllib3==2.7.0
     #   requests
 uvicorn==0.51.0
     # via dagster-webserver
-uvloop==0.22.1
-    # via uvicorn
 watchdog==6.0.0
     # via dagster
 watchfiles==1.2.0
