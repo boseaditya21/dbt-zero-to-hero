@@ -36,11 +36,11 @@ models:
           - positive_values
 
   - name: dim_listings_w_hosts
-    data_tests: # 👈 Fixed key to data_tests
-      - dbt_expectations.expect_table_row_count_to_equal_other_table: # 👈 Added space after the dash
-          arguments: # 👈 Nested arguments block correctly
+    data_tests:
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          arguments:
             compare_model: source('airbnb', 'listings')
-    columns: # 👈 Added back the column validation tests for completeness
+    columns:
       - name: price
         data_tests:
           - dbt_expectations.expect_column_values_to_be_of_type:
@@ -48,7 +48,6 @@ models:
                 column_type: number
           - dbt_expectations.expect_column_quantile_values_to_be_between:
               arguments:
-                # 👈 'column_type: number' was removed from here!
                 quantile: .99
                 min_value: 50
                 max_value: 500
@@ -59,10 +58,14 @@ models:
                 severity: warn
 
   - name: dim_hosts_cleansed
+    latest_version: 2
+    description: "Cleansed dimensional table containing host details"
     versions:
       - v: 1
         defined_in: dim_hosts_cleansed
         deprecation_date: 2026-07-08
+        config: # 👈 Added config block to version 1
+          enabled: false # 👈 Set enabled to false to bypass expiration errors
       - v: 2
         defined_in: dim_hosts_cleansed_v2
         deprecation_date: 2030-01-01
@@ -74,8 +77,6 @@ models:
             data_type: string
             constraints:
               - type: not_null
-    latest_version: 2
-    description: "Cleansed dimensional table containing host details"
     columns:
       - name: host_id
         data_type: integer
