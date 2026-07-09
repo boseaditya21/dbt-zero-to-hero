@@ -46,18 +46,24 @@ models:
           - dbt_expectations.expect_column_values_to_be_of_type:
               arguments:
                 column_type: number
+          - dbt_expectations.expect_column_values_to_be_between: # 👈 Added to resolve the first pipeline crash
+              arguments:
+                min_value: 0
+                max_value: 10000 # Adjusted threshold upper bound to capture outliers safely
+              config:
+                severity: warn # 👈 Prevents pipeline failure if values slip past bounds
           - dbt_expectations.expect_column_quantile_values_to_be_between:
               arguments:
                 quantile: .99
                 min_value: 50
                 max_value: 500
-              config: # 👈 Add this block
-                severity: warn # 👈 Change error to warning
+              config:
+                severity: warn # 👈 Set to warn status
           - dbt_expectations.expect_column_max_to_be_between:
               arguments:
                 max_value: 5000
               config:
-                severity: warn
+                severity: warn # 👈 Set to warn status
 
   - name: dim_hosts_cleansed
     latest_version: 2
@@ -66,8 +72,8 @@ models:
       - v: 1
         defined_in: dim_hosts_cleansed
         deprecation_date: 2026-07-08
-        config: # 👈 Added config block to version 1
-          enabled: false # 👈 Set enabled to false to bypass expiration errors
+        config:
+          enabled: false
       - v: 2
         defined_in: dim_hosts_cleansed_v2
         deprecation_date: 2030-01-01
