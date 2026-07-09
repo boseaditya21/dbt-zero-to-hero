@@ -34,7 +34,7 @@ models:
         description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
         data_tests:
           - positive_values
-  
+
   - name: dim_listings_w_hosts
     data_tests: # 👈 Fixed key to data_tests
       - dbt_expectations.expect_table_row_count_to_equal_other_table: # 👈 Added space after the dash
@@ -59,6 +59,22 @@ models:
                 severity: warn
 
   - name: dim_hosts_cleansed
+    versions:
+      - v: 1
+        defined_in: dim_hosts_cleansed
+        deprecation_date: 2026-07-08
+      - v: 2
+        defined_in: dim_hosts_cleansed_v2
+        deprecation_date: 2030-01-01
+        columns:
+          - include: "*"
+            exclude: [host_name]
+          - name: host_name
+            description: The name of the host (N/A if not available)
+            data_type: string
+            constraints:
+              - type: not_null
+    latest_version: 2
     description: "Cleansed dimensional table containing host details"
     columns:
       - name: host_id
